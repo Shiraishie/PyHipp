@@ -9,8 +9,8 @@
 #SBATCH -J "rse"   # job name
 
 ## /SBATCH -p general # partition (queue)
-#SBATCH -o rse.%N.%j.out # STDOUT
-#SBATCH -e rse.%N.%j.err # STDERR
+#SBATCH -o rse-slurm.%N.%j.out # STDOUT
+#SBATCH -e rse-slurm.%N.%j.err # STDERR
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 python -u -c "import PyHipp as pyh; \
@@ -21,6 +21,6 @@ print(time.localtime()); \
 os.chdir('sessioneye'); \
 pyh.RPLSplit(SkipLFP=False, SkipHighPass=False); \
 print(time.localtime()); \
-print(time.time()-t0);
+print(time.time()-t0);"
 
 aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:345594609125:awsnotify --message "RSE"
