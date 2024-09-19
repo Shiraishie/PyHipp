@@ -6,7 +6,11 @@
 #SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
 #SBATCH --nodes=1   # number of nodes
 #SBATCH --cpus-per-task=1	# number of processors per task
+<<<<<<< HEAD
 #SBATCH -J "freq-slurm"   # job name
+=======
+#SBATCH -J "freq"   # job name
+>>>>>>> upstream/main
 
 ## /SBATCH -p general # partition (queue)
 #SBATCH -o freq-slurm.%N.%j.out # STDOUT
@@ -16,5 +20,9 @@
 python -u -c "import PyHipp as pyh; \
 import time; \
 pyh.FreqSpectrum(saveLevel=1); \
+<<<<<<< HEAD
 pyh.FreqSpectrum(loadHighPass=True, pointsPerWindow=3000, saveLevel=1);
+=======
+pyh.FreqSpectrum(loadHighPass=True, pointsPerWindow=3000, saveLevel=1); \
+>>>>>>> upstream/main
 print(time.localtime());"
